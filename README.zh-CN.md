@@ -16,13 +16,13 @@ steps:
   - uses: actions/checkout@v4
   - uses: Ylarod/setup-ndk-clang@v1
     with:
-      ndk-version: r29
+      ndk-version: r30
   - run: clang --version
 ```
 
 ## 功能特性
 
-- 🚀 支持多个 NDK 版本（r29, r28c, r27d, r26d, r25c）
+- 🚀 支持多个 NDK 版本（r30, r29, r28c, r27d, r26d, r25c）
 - 💾 自动缓存，加快构建速度
 - 🖥️ 跨平台支持（Linux、macOS、Windows）
 - 📦 使用 zstd 压缩的可重现构建
@@ -37,7 +37,7 @@ steps:
   - uses: actions/checkout@v4
   - uses: Ylarod/setup-ndk-clang@v1
     with:
-      ndk-version: r29
+      ndk-version: r30
   - run: clang --version
 ```
 
@@ -49,7 +49,7 @@ steps:
   - uses: Ylarod/setup-ndk-clang@v1
     id: setup-clang
     with:
-      ndk-version: r29
+      ndk-version: r30
       add-to-path: false
   - run: ${{ steps.setup-clang.outputs.clang-path }}/bin/clang --version
 ```
@@ -61,7 +61,7 @@ steps:
   - uses: actions/checkout@v4
   - uses: Ylarod/setup-ndk-clang@v1
     with:
-      ndk-version: r29
+      ndk-version: r30
 ```
 
 ### 多版本工具链
@@ -71,9 +71,9 @@ steps:
   - uses: actions/checkout@v4
 
   - uses: Ylarod/setup-ndk-clang@v1
-    id: clang-r29
+    id: clang-r30
     with:
-      ndk-version: r29
+      ndk-version: r30
       add-to-path: false
 
   - uses: Ylarod/setup-ndk-clang@v1
@@ -82,8 +82,8 @@ steps:
       ndk-version: r26d
       add-to-path: false
 
-  - name: Build with r29
-    run: ${{ steps.clang-r29.outputs.clang-path }}/bin/clang myapp.c -o myapp-r29
+  - name: Build with r30
+    run: ${{ steps.clang-r30.outputs.clang-path }}/bin/clang myapp.c -o myapp-r30
 
   - name: Build with r26d
     run: ${{ steps.clang-r26d.outputs.clang-path }}/bin/clang myapp.c -o myapp-r26d
@@ -91,10 +91,10 @@ steps:
 
 ## Action 输入参数
 
-| 参数          | 说明                                          | 必填 | 默认值 |
-| ------------- | --------------------------------------------- | ---- | ------ |
-| `ndk-version` | NDK 版本（例如：r29, r28c, r27d, r26d, r25c） | 是   | -      |
-| `add-to-path` | 是否将安装目录的 bin 文件夹添加到 PATH        | 否   | `true` |
+| 参数          | 说明                                               | 必填 | 默认值 |
+| ------------- | -------------------------------------------------- | ---- | ------ |
+| `ndk-version` | NDK 版本（例如：r30, r29, r28c, r27d, r26d, r25c） | 是   | -      |
+| `add-to-path` | 是否将安装目录的 bin 文件夹添加到 PATH             | 否   | `true` |
 
 ## Action 输出参数
 
@@ -107,8 +107,9 @@ steps:
 
 当前支持的 NDK 版本及其对应的 Clang 版本可以在 [`mapping.json`](mapping.json) 文件中查看。
 
-已测试的版本包括：
+支持的版本包括：
 
+- r30 (clang r574158c)
 - r29 (clang r563880c)
 - r28c (clang r530567e)
 - r27d (clang r522817d)
@@ -131,14 +132,14 @@ steps:
 
 ```bash
 # 下载 Linux 版本
-wget https://github.com/Ylarod/setup-ndk-clang/releases/download/prebuilt/clang-linux-x86-ndk-r29-r563880c.tar.zst
+wget https://github.com/Ylarod/setup-ndk-clang/releases/download/prebuilt/clang-linux-x86-ndk-r30-r574158c.tar.zst
 
 # 解压
-tar -I unzstd -xf clang-linux-x86-ndk-r29-r563880c.tar.zst
+tar -I unzstd -xf clang-linux-x86-ndk-r30-r574158c.tar.zst
 
 # 验证校验和
-wget https://github.com/Ylarod/setup-ndk-clang/releases/download/prebuilt/clang-linux-x86-ndk-r29-r563880c.tar.zst.sha256
-sha256sum -c clang-linux-x86-ndk-r29-r563880c.tar.zst.sha256
+wget https://github.com/Ylarod/setup-ndk-clang/releases/download/prebuilt/clang-linux-x86-ndk-r30-r574158c.tar.zst.sha256
+sha256sum -c clang-linux-x86-ndk-r30-r574158c.tar.zst.sha256
 ```
 
 ## 工作原理

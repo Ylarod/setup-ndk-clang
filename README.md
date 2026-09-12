@@ -16,13 +16,13 @@ steps:
   - uses: actions/checkout@v4
   - uses: Ylarod/setup-ndk-clang@v1
     with:
-      ndk-version: r29
+      ndk-version: r30
   - run: clang --version
 ```
 
 ## Features
 
-- 🚀 Support for multiple NDK versions (r29, r28c, r27d, r26d, r25c)
+- 🚀 Support for multiple NDK versions (r30, r29, r28c, r27d, r26d, r25c)
 - 💾 Automatic caching to speed up builds
 - 🖥️ Cross-platform support (Linux, macOS, Windows)
 - 📦 Reproducible builds with zstd compression
@@ -37,7 +37,7 @@ steps:
   - uses: actions/checkout@v4
   - uses: Ylarod/setup-ndk-clang@v1
     with:
-      ndk-version: r29
+      ndk-version: r30
   - run: clang --version
 ```
 
@@ -49,7 +49,7 @@ steps:
   - uses: Ylarod/setup-ndk-clang@v1
     id: setup-clang
     with:
-      ndk-version: r29
+      ndk-version: r30
       add-to-path: false
   - run: ${{ steps.setup-clang.outputs.clang-path }}/bin/clang --version
 ```
@@ -61,7 +61,7 @@ steps:
   - uses: actions/checkout@v4
   - uses: Ylarod/setup-ndk-clang@v1
     with:
-      ndk-version: r29
+      ndk-version: r30
 ```
 
 ### Multiple Toolchain Versions
@@ -71,9 +71,9 @@ steps:
   - uses: actions/checkout@v4
 
   - uses: Ylarod/setup-ndk-clang@v1
-    id: clang-r29
+    id: clang-r30
     with:
-      ndk-version: r29
+      ndk-version: r30
       add-to-path: false
 
   - uses: Ylarod/setup-ndk-clang@v1
@@ -82,8 +82,8 @@ steps:
       ndk-version: r26d
       add-to-path: false
 
-  - name: Build with r29
-    run: ${{ steps.clang-r29.outputs.clang-path }}/bin/clang myapp.c -o myapp-r29
+  - name: Build with r30
+    run: ${{ steps.clang-r30.outputs.clang-path }}/bin/clang myapp.c -o myapp-r30
 
   - name: Build with r26d
     run: ${{ steps.clang-r26d.outputs.clang-path }}/bin/clang myapp.c -o myapp-r26d
@@ -93,7 +93,7 @@ steps:
 
 | Input         | Description                                             | Required | Default |
 | ------------- | ------------------------------------------------------- | -------- | ------- |
-| `ndk-version` | NDK version (e.g., r29, r28c, r27d, r26d, r25c)         | Yes      | -       |
+| `ndk-version` | NDK version (e.g., r30, r29, r28c, r27d, r26d, r25c)    | Yes      | -       |
 | `add-to-path` | Add the installation directory's bin folder to the PATH | No       | `true`  |
 
 ## Action Outputs
@@ -107,8 +107,9 @@ steps:
 
 The currently supported NDK versions and their corresponding Clang versions can be found in the [`mapping.json`](mapping.json) file.
 
-Tested versions include:
+Supported versions include:
 
+- r30 (clang r574158c)
 - r29 (clang r563880c)
 - r28c (clang r530567e)
 - r27d (clang r522817d)
@@ -131,14 +132,14 @@ Example:
 
 ```bash
 # Download for Linux
-wget https://github.com/Ylarod/setup-ndk-clang/releases/download/prebuilt/clang-linux-x86-ndk-r29-r563880c.tar.zst
+wget https://github.com/Ylarod/setup-ndk-clang/releases/download/prebuilt/clang-linux-x86-ndk-r30-r574158c.tar.zst
 
 # Extract
-tar -I unzstd -xf clang-linux-x86-ndk-r29-r563880c.tar.zst
+tar -I unzstd -xf clang-linux-x86-ndk-r30-r574158c.tar.zst
 
 # Verify checksum
-wget https://github.com/Ylarod/setup-ndk-clang/releases/download/prebuilt/clang-linux-x86-ndk-r29-r563880c.tar.zst.sha256
-sha256sum -c clang-linux-x86-ndk-r29-r563880c.tar.zst.sha256
+wget https://github.com/Ylarod/setup-ndk-clang/releases/download/prebuilt/clang-linux-x86-ndk-r30-r574158c.tar.zst.sha256
+sha256sum -c clang-linux-x86-ndk-r30-r574158c.tar.zst.sha256
 ```
 
 ## How It Works

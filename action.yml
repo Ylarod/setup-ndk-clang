@@ -7,7 +7,7 @@ branding:
 
 inputs:
   ndk-version:
-    description: NDK version (e.g., r29, r28c, r27d, r26d, r25c)
+    description: NDK version (e.g., r30, r29, r28c, r27d, r26d, r25c)
     required: true
   add-to-path:
     description: Add installation directory's bin folder to the PATH
